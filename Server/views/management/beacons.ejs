@@ -1,0 +1,127 @@
+<% layout('layout') -%>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            BeaCon
+            <small>Condition</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-laptop"></i> Home</a></li>
+            <li class="active">Beacon</li>
+          </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+          <!-- Small boxes (Stat box) -->
+          <div class="col-md-6">
+            <div class="box">
+              <div class="box-header">
+                <p><h3 class="box-title">BeaCon</h3></p>
+              </div><!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-condensed">
+                  <tr>
+                    <th style="width: 30px; text-align: center">#</th>
+                    <th style="width: 100px">Mac Address</th>
+                    <th style="width: 100px">Location</th>
+                    <th style="width: 100px">Remove</th>
+                  </tr>
+                  <% object1.forEach(function (item, index) { %>
+                  <tr>
+                    <td style=" text-align: center"><%= index+1 %></td>
+                    <td><%= item.MAC %></td>
+                    <td><%= item.LOC_CODE %></td>
+                    <td><a href = "/management/beacon/delete/<%= item.MAC %>">DEL</a></td>
+                  </tr>
+                  <% }); %>
+                </table>
+              </div><!-- /.box-body -->
+            </div><!-- /.box -->
+            <div class="row"><!-- left column -->
+              <div class="col-md-12"><!-- general form elements -->
+                <div class="box">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Create Beacon</h3>
+                  </div><!-- /.box-header -->
+                  <!-- form start -->
+                  <form id="frmBeacon" action="/management/beacon/insert" method="POST" >
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Mac</label>
+                      <input name="MAC" maxlength=17 type="text" class="form-control" placeholder="Mac Address">
+                    </div>
+                    <div class="form-group">
+                      <label>Location</label>
+                      <select name="LOCATION" class="form-control select2" style="width: 100%;">
+                        <option selected="selected">select</option>
+                        <% object2.forEach(function (item, index) { %>
+                        <option><%= item.CODE %></option>
+                        <% }); %>
+                      </select>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.box-body -->
+	          <div class="box-footer">
+                    <input type="submit" class="btn btn-primary"></input>
+                    <button type="cancel" class="btn btn-danger">cancel</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+            </div><!--/.col (right) -->
+          </div>   <!-- /.row -->
+        </div>
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header">
+              <p><h3 class="box-title">Location</h3></p>
+            </div><!-- /.box-header -->
+          <div class="box-body no-padding">
+            <table class="table table-condensed">
+              <tr>
+                <th style="width: 30px; text-align: center">#</th>
+                <th style="width: 100px">Room Code</th>
+                <th style="width: 100px">Room</th>
+                <th style="width: 100px">Remove</th>
+              </tr>
+              <% object2.forEach(function (item, index) { %>
+              <tr>
+                <td style="text-align: center"><%= index+1 %></td>
+                <td><%= item.CODE %></td>
+                <td><%= item.NAME %></td>
+		<td><a href = "/management/location/delete/<%= item.CODE %>">DEL</a></td>
+              </tr>
+              <% }); %>
+            </table>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+	<div class="row"><!-- left column -->
+	  <div class="col-md-12"><!-- general form elements -->
+            <div class="box">
+              <div class="box-header with-border">
+                <h3 class="box-title">Create Location</h3>
+              </div><!-- /.box-header -->
+              <!-- form start -->
+              <form id="frmLocation" action="/management/location/insert" method="POST">
+                <div class="box-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Room Code</label>
+                    <input name="CODE" maxlength=9 type="text" class="form-control" placeholder="Enter RoomCode">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Room</label>
+                    <input name="NAME" maxlength=50 type="text" class="form-control" placeholder="Room Num">
+                  </div>
+                </div><!-- /.box-body -->
+
+                <div class="box-footer">
+                  <input type="submit" class="btn btn-primary"></input>
+                  <button type="cancel" class="btn btn-danger">cancel</button>
+                </div>
+              </form>
+            </div><!-- /.box -->
+          </div><!--/.col (right) -->
+        </div>   <!-- /.row -->
+      </div>
+    </section><!-- /.content -->
+  </div><!-- /.content-wrapper -->

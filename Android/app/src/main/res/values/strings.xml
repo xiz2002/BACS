@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidBeacon</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">출석체크</string>
+
+
+    <string name="Scan_Beacon">Scaning...</string>
+
+    <string name="error_ble_not_support">The device doesn\'t support BLE.\nPlease run on a supportable device.</string>
+</resources>
